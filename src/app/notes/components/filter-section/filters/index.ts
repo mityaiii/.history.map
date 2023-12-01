@@ -1,0 +1,1 @@
+export { FilterHoc } from './filter.hoc'
