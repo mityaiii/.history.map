@@ -1,7 +1,16 @@
 import React from 'react'
+import { Personal } from '../components/personal'
+import { BirthDate } from '../components/birth-date'
+import { Partisanship } from '../components/partisanship'
+import { Sex } from '../components/sex'
 
 export const FilterPersonal = () => {
   return (
-    <div>FilterPersonal</div>
+    <>
+      <Personal/>
+      <BirthDate/>
+      <Sex/>
+      <Partisanship/>
+    </>
   )
 }

@@ -1,22 +1,36 @@
-import React from 'react'
+'use client'
 
-const DateInput = ({ date }: { date: string}) => {
+import React from 'react'
+import { Cross } from '@/app/notes/components/filter-section/components/cross';
+
+const DateInput = ({ date, dateInputHandler }: 
+  { date: string, dateInputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
   return(
-    <div className='w-32 h-7 text-center text-sm pt-[5px] rounded-sm bg-neutral-100'>
-      { date }
-    </div>
+    <input 
+      value={date}
+      onChange={dateInputHandler}
+      type='date'
+      className='w-32 h-7 rounded-sm text-center text-sm bg-neutral-100'
+    />
   )
 } 
 
-export interface IPeriodInput {
+export interface IPeriod {
   start: string,
   end: string,
 }
 
-export const PeriodInput: React.FC<IPeriodInput> = (props) => {
+interface IPeriodInput {
+  period: IPeriod;
+  onClick: () => void;
+  periodStartHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  periodEndHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const PeriodInput: React.FC<IPeriodInput> = ({ period, onClick, periodStartHandler, periodEndHandler }) => {
   return (
-    <div className='flex items-center gap-x-2'>
-      <DateInput date={props.start}/>
+    <div className='flex items-center mb-3 gap-x-2'>
+      <DateInput dateInputHandler={periodStartHandler} date={period.start}/>
       <svg 
         width='35' 
         height='2' 
@@ -26,7 +40,8 @@ export const PeriodInput: React.FC<IPeriodInput> = (props) => {
       >
         <line y1='1' x2='35' y2='1' stroke='#EDEDEF'/>
       </svg>
-      <DateInput date={props.end}/>
+      <DateInput dateInputHandler={periodEndHandler} date={period.end}/>
+      <Cross onClick={onClick}/>
     </div>
   )
 }

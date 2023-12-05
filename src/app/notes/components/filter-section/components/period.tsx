@@ -2,17 +2,29 @@
 
 import React, { useState } from 'react'
 import { Header } from './header'
-import { IPeriodInput, PeriodInput } from './period-input'
+import { IPeriod, PeriodInput } from './period-input'
+import { AddValueButton } from './add-value-button'
 
-const initValue: IPeriodInput[] = [
+const initValue: IPeriod[] = [
   {
-    start: '01/01/1942',
-    end: '01/02/1942',
+    start: '',
+    end: '',
   },
 ]
 
 export const Period = () => {
-  const [selectedPeriods, setSelectedPeriods] = useState<IPeriodInput[]>(initValue)
+  const [selectedPeriods, setSelectedPeriods] = useState<IPeriod[]>(initValue);
+
+  const addPeriod = () => {
+    setSelectedPeriods(prev => [...prev, {
+      start: '',
+      end: '',
+    }]);
+  };
+
+  const removePeriod = (elementIndx: number) => {
+    setSelectedPeriods(prev => prev.filter((value, indx) => indx !== elementIndx ))
+  }
 
   return (
     <div className='relative'>
@@ -49,8 +61,26 @@ export const Period = () => {
         } 
         text='временной промежуток'
       />
-      <span className='absolute right-0 -top-[2px] font-bold text-xl'>+</span>
-      { selectedPeriods.map((period, indx) => <PeriodInput key={indx} {...period}/>)}
+      <AddValueButton
+        onClick={addPeriod}
+      />
+      { selectedPeriods.map((period, indx) => 
+        <PeriodInput 
+          key={indx} 
+          period={period} 
+          periodStartHandler={(e: React.ChangeEvent<HTMLInputElement>) => { 
+            const newDates = [...selectedPeriods];
+            newDates[indx].start = e.target.value;
+            setSelectedPeriods(newDates);
+          }}
+          periodEndHandler={(e: React.ChangeEvent<HTMLInputElement>) => {
+            const newDates = [...selectedPeriods];
+            newDates[indx].end = e.target.value;
+            setSelectedPeriods(newDates);
+          }}
+          onClick={() => removePeriod(indx)}
+        />
+      )}
     </div>
   )
 }

@@ -1,5 +1,13 @@
+'use client'
+
 import React from 'react'
 import { Header } from './header'
+import { CustomSelect } from './custome-select'
+
+const options = [
+  { value: 'бомбардировка', label: 'бомбардировка' },
+  { value: 'пожар', label: 'пожар' },
+]
 
 export const Thematics = () => {
   return (
@@ -19,6 +27,25 @@ export const Thematics = () => {
           </svg>
         }
       />
+      <CustomSelect
+        isMulti={true}
+        options={options}
+        placeholder='выбрать тематику'
+      />
     </div>
   )
 }
+
+
+// const [selectedThematics, setThematic] = useState<string[]>([])
+
+// const removeThematic = (elementIndx: number) => {
+//   setThematic(prev => prev.filter((value, indx) => indx !== elementIndx ))
+// }
+
+// const addThematic = (e: React.ChangeEvent<HTMLSelectElement>) => {
+//   const selectedOption = e.target.value;
+//   if (selectedOption && !selectedThematics.includes(selectedOption)) {
+//     setThematic(prev => [...prev, selectedOption]);
+//   }
+// };

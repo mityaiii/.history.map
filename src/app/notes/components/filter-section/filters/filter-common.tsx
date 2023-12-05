@@ -9,10 +9,10 @@ export const FilterCommon = () => {
   return (
     <>
       <Period/>
+      <Thematics/>
       <TypeOfCertificate/>
       <Retrospective/>
       <Significance/>
-      <Thematics/>
     </>
   )
 }

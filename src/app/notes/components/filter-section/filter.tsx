@@ -1,10 +1,11 @@
 import React from 'react'
 import { FilterHoc } from './filters/index'
+import { filterType } from './filter.type'
 
-export const Filter = () => {
+export const Filter = ({ variant }: { variant: filterType }) => {
   return (
-    <div className='bg-slate-50 pt-4 rounded-md w-[400px]'>
-      <FilterHoc variant='общее'/>
+    <div className='bg-slate-50 pt-4 mx-auto sm:ml-3 rounded-md'>
+      <FilterHoc variant={ variant }/>
     </div>
   )
 }
