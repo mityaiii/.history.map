@@ -1,0 +1,36 @@
+import React from 'react'
+import Checkbox from './checkbox'
+import { Header } from './header'
+
+export const Sex = () => {
+  return (
+    <div>
+      <Header
+        text='ретроспектива'
+        icon={
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M7.5 3.5V6.5' stroke='#7E869E' strokeOpacity='0.25' strokeLinecap='round'/>
+            <path d='M7.5 14.5V18.5' stroke='#7E869E' strokeOpacity='0.25' strokeLinecap='round'/>
+            <path 
+              d='M5 7.8C5 6.80589 5.80589 6 6.8 6H8.2C9.19411 6 10 6.80589 10 7.8V13.2C10 14.1941 9.19411
+              15 8.2 15H6.8C5.80589 15 5 14.1941 5 13.2V7.8Z' 
+              fill='#222222'
+            />
+            <path d='M16.5 6.5V11.5' stroke='#7E869E' strokeOpacity='0.25' strokeLinecap='round'/>
+            <path d='M16.5 16.5V20.5' stroke='#7E869E' strokeOpacity='0.25' strokeLinecap='round'/>
+            <path 
+              d='M14 12.8C14 11.8059 14.8059 11 15.8 11H17.2C18.1941 11 19 11.8059 19 12.8V15.2C19 16.1941
+              18.1941 17 17.2 17H15.8C14.8059 17 14 16.1941 14 15.2V12.8Z' 
+              fill='#222222'
+            />
+          </svg>
+        }
+      />
+
+      <ul className='ml-4 flex flex-col'>
+        <Checkbox text='Мужской' id='id'/>
+        <Checkbox text='Женский' id='id'/>
+      </ul>
+    </div>
+  )
+}
