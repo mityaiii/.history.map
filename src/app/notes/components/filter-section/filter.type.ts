@@ -1,0 +1,1 @@
+export type filterType = 'общее' | 'персоналия' | 'место';
