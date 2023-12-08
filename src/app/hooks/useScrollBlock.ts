@@ -1,5 +1,3 @@
-'use client'
-
 import { useRef } from 'react';
 
 export const useScrollBlock = (): [() => void, () => void] => {
