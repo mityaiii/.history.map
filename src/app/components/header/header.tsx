@@ -4,7 +4,7 @@ export default function Header() {
 
   const sections = [
     { name: 'о проекте', path: '/' },
-    { name: 'карта', path: '/' },
+    { name: 'карта', path: '/map' },
     { name: 'цитаты', path: '/' },
     { name: 'персоналии', path: '/' },
   ]
