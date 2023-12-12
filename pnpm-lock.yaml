@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/geojson':
+    specifier: ^7946.0.13
+    version: 7946.0.13
   framer-motion:
     specifier: ^10.16.14
     version: 10.16.16(react-dom@18.2.0)(react@18.2.0)
