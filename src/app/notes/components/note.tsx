@@ -11,8 +11,8 @@ export interface INote {
 
 export const Note: React.FC<INote> = (props) => {
   return (
-    <div>
-
+    <div className=''>
+      
     </div>
   )
 }

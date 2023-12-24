@@ -17,8 +17,7 @@ const notes: INote[] = [
 // add fetch to server
 export default function NotesPage() {
   return (
-    <main className='bg-[#EDEDEF] min-h-[100vh]'>
-      {/* <ControlPanel/> */}
+    <main className='bg-gray-700 pt-24 min-h-[100vh]'>
       <Notes notes={notes}/>
     </main>
   )

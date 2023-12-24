@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from './header'
-import Checkbox from './checkbox'
+import { Checkbox } from '@/app/components/checkbox/checkbox'
 
 const significanceTypes: string[] = [
   'Общегородская',
@@ -26,7 +26,7 @@ export const Significance = () => {
       />
       <ul className='ml-4 flex flex-col'>
         { significanceTypes.map((value, indx) => 
-          <Checkbox key={indx} text={value} id='id'/>
+          <Checkbox key={indx} id={`significance-${indx}`}>{ value }</Checkbox>
         )}
       </ul>
     </div>

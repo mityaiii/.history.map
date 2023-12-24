@@ -1,19 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Cross } from '@/app/notes/components/filter-section/components/cross';
-
-const DateInput = ({ date, dateInputHandler }: 
-  { date: string, dateInputHandler: (e: React.ChangeEvent<HTMLInputElement>) => void }) => {
-  return(
-    <input 
-      value={date}
-      onChange={dateInputHandler}
-      type='date'
-      className='w-32 h-7 rounded-sm text-center text-sm bg-neutral-100'
-    />
-  )
-} 
+import { DeleteValueButton } from '@/app/components/buttons/delete-value.button'
+import { DateInput } from '@/app/components/inputs/date.input';
 
 export interface IPeriod {
   start: string,
@@ -41,7 +30,7 @@ export const PeriodInput: React.FC<IPeriodInput> = ({ period, onClick, periodSta
         <line y1='1' x2='35' y2='1' stroke='#EDEDEF'/>
       </svg>
       <DateInput dateInputHandler={periodEndHandler} date={period.end}/>
-      <Cross onClick={onClick}/>
+      <DeleteValueButton onClick={onClick}/>
     </div>
   )
 }

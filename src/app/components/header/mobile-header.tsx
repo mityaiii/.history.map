@@ -33,11 +33,9 @@ const navigation = {
 
 const item = {
   hidden: {
-    opacity: 0,
     translateY: 10,
   },
   show: {
-    opacity: 1,
     translateY: 0,
     transition: {
       duration: 0.6,
@@ -45,6 +43,17 @@ const item = {
     },
   },
 };
+
+const navContainer = {
+  hidden: {
+    opacity: 0,
+    display: 'none',
+  },
+  show: {
+    opacity: 1,
+    display: 'block',
+  },
+}
 
 export default function MobileHeader(props: IHeaderHocProperties) {
   const [open, setOpen] = useState(false);
@@ -60,7 +69,7 @@ export default function MobileHeader(props: IHeaderHocProperties) {
       initial={false}
       variants={navigation}
       animate={open ? 'show' : 'hidden'}
-      className='absolute lg:hidden w-full text-white z-10'
+      className='absolute lg:hidden w-full bg-gray-700 bg-opacity-20 backdrop-blur-md text-white z-10'
     >
       <div className='w-5/6 mx-auto'>
         <motion.div
@@ -86,19 +95,29 @@ export default function MobileHeader(props: IHeaderHocProperties) {
           </motion.button>
         </motion.div>
         <hr />
-        {props.sections.map((section, index) => {
-          return (
-            <motion.div key={index} variants={item}>
-              <div
-                className='text-xl h-20 flex items-center cursor-pointer'
-                onClick={() => setOpen(false)}
-              >
-                <Link href={section.path}>{section.name}</Link>
-              </div>
-              <hr></hr>
-            </motion.div>
-          );
-        })}
+        <motion.div
+          initial={false}
+          animate={open ? 'show' : 'hidden'}
+          variants={navContainer}
+          transition={{
+            ease: 'linear',
+            duration: '0.05',
+          }}
+        >
+          {props.sections.map((section, index) => {
+            return (
+              <motion.div key={index} variants={item}>
+                <div
+                  className='text-xl h-20 flex items-center cursor-pointer opacity-1'
+                  onClick={() => setOpen(false)}
+                >
+                  <Link href={section.path}>{section.name}</Link>
+                </div>
+                <hr></hr>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </motion.div>
   );

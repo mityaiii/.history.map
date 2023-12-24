@@ -1,6 +1,6 @@
 import React from 'react'
-import Checkbox from './checkbox'
 import { Header } from './header'
+import { Checkbox } from '@/app/components/checkbox/checkbox'
 
 export const Sex = () => {
   return (
@@ -28,8 +28,8 @@ export const Sex = () => {
       />
 
       <ul className='ml-4 flex flex-col'>
-        <Checkbox text='Мужской' id='id'/>
-        <Checkbox text='Женский' id='id'/>
+        <Checkbox id='id-male'>Мужской</Checkbox>
+        <Checkbox id='id-female'>Женский</Checkbox>
       </ul>
     </div>
   )

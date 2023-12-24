@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react'
 import { Header } from './header'
-import { IPeriod, PeriodInput } from './period-input'
-import { AddValueButton } from './add-value-button'
+import { IPeriod, PeriodInput } from '@/app/components/inputs/period.input'
+import { AddValueButton } from '@/app/components/buttons/add-value.button'
 
 const initValue: IPeriod[] = [
   {
@@ -61,9 +61,7 @@ export const Period = () => {
         } 
         text='временной промежуток'
       />
-      <AddValueButton
-        onClick={addPeriod}
-      />
+      <AddValueButton className='absolute right-0 -top-[2px] font-bold text-xl' onClick={addPeriod}>+</AddValueButton>
       { selectedPeriods.map((period, indx) => 
         <PeriodInput 
           key={indx} 

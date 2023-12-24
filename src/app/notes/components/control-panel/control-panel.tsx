@@ -5,7 +5,7 @@ import { FilterIcon } from './filter-icon'
 import { ButtonWithIcon } from './button-with-icon'
 import { CrossIcon } from './cross-icon'
 
-export const ControlPanel = () => {
+export const ControlPanel = ({ onFilterClick }: { onFilterClick?: () => void }) => {
   const [inputText, setInputText] = useState('')
 
   const textHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,13 +13,16 @@ export const ControlPanel = () => {
   }
 
   return (
-    <div className='flex gap-2'>
+    <div className='flex gap-2 pb-3'>
       <input 
         type='text'
         onChange={textHandler}
-        className='bg-search-field bg-no-repeat bg-right-with-space rounded-xl shadow-xl'
+        className='w-full pl-5 pr-10 bg-search-field bg-no-repeat bg-right-with-space rounded-xl shadow-xl'
       />
-      <ButtonWithIcon bgColor='bg-warn-500'>
+      <ButtonWithIcon 
+        onClick={onFilterClick}
+        bgColor='bg-warn-500'
+      >
         <FilterIcon/>
       </ButtonWithIcon>
       <ButtonWithIcon bgColor='bg-angry-700'>

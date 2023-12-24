@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from './header'
-import Checkbox from './checkbox'
+import { Checkbox } from '@/app/components/checkbox/checkbox'
 
 const certificateTypes: string[] = [
   'Личное',
@@ -39,12 +39,14 @@ export const TypeOfCertificate = () => {
       />
       <ul className='ml-4 flex flex-col'>
         { 
-          certificateTypes.map((value, indx) => 
+          certificateTypes.map((value, indx) => ( 
             <Checkbox 
+              id={`certificate-${indx}`}
               key={indx}
-              text={ value }
-              id='id1'
-            />)
+            >
+              { value }
+            </Checkbox>
+          ))
         }
       </ul>
     </div>

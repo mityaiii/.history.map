@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from './header'
-import Checkbox from './checkbox'
+import { Checkbox } from '@/app/components/checkbox/checkbox'
 
 export const Partisanship = () => {
   return (
@@ -37,8 +37,8 @@ export const Partisanship = () => {
       />
 
       <ul className='ml-4 flex flex-col'>
-        <Checkbox text='Партийный' id='id'/>
-        <Checkbox text='Беспартийный' id='id'/>
+        <Checkbox id={'id-partition'}>Партийный</Checkbox>
+        <Checkbox id={'id-no-partition'}>Беспартийный</Checkbox>
       </ul>
     </div>
   )
