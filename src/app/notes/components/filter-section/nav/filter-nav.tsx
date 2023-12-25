@@ -24,7 +24,7 @@ export const FilterNav = ({ setFilter }: { setFilter: React.Dispatch<React.SetSt
   const [indxOfActiveItem, setIndxOfActiveItem] = useState(0)
 
   return (
-    <div className='mb-3 mx-1 sm:mx-4'>
+    <div className='mb-3'>
       <ul className='flex justify-between'>
         { navItemsValue.map((value, indx) => 
           <FilterNavItem

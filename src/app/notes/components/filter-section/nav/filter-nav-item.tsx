@@ -18,7 +18,7 @@ export const FilterNavItem: React.FC<IFilterNavItemProps> = ({ filter, status, o
       onClick={onClick}
       className={`${status ? filter.activeColor : 'bg-slate-100'} 
       text-sm sm:text-base
-      cursor-pointer py-2 px-[0.8rem] sm:px-4 shadow-md rounded-2xl 
+      cursor-pointer py-2 px-2 sx:px-[0.8rem] sm:px-4 shadow-md rounded-2xl 
       transition-colors ${!status ? 'hover:bg-slate-300': ''}`}
     >
       <a>

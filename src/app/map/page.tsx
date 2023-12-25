@@ -1,6 +1,6 @@
 'use client';
 
-import Map from '../components/map/Map';
+import Map from '@/app/components/map/Map';
 
 export default function MapPage() {
   return (
@@ -15,6 +15,7 @@ export default function MapPage() {
               coordinates: [30.3083, 59.9572],
             },
             properties: {
+              note_id: 1,
               name: 'Itmo University2',
             },
           },
@@ -25,6 +26,7 @@ export default function MapPage() {
               coordinates: [30.3093, 59.9582],
             },
             properties: {
+              note_id: 1,
               name: 'Itmo University3',
             },
           },
@@ -35,6 +37,7 @@ export default function MapPage() {
               coordinates: [30.3063, 59.9562],
             },
             properties: {
+              note_id: 1,
               name: 'Itmo University',
             },
           },
@@ -45,6 +48,6 @@ export default function MapPage() {
         lat: 59.9311,
         zoom: 12,
       }}
-    ></Map>
+    />
   );
 }

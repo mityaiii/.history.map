@@ -1,21 +1,13 @@
-import React from 'react'
-import { INote } from './components/note'
-import { Notes } from './components/notes'
+'use client'
 
-const notes: INote[] = [
-  {
-    note_id: 1,
-    author_id: 1,
-    point_id: 1,
-    created_at: Date.now().toString(),
-    // eslint-disable-next-line max-len
-    citation: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus eveniet quia illum modi nemo quam, officiis incidunt repudiandae ab suscipit ipsa quasi! Quaerat minima eveniet doloribus voluptas quis reprehenderit repellendus.',
-    citation_source: 'Book 1984',
-  },
-]
+import React from 'react'
+import { Notes } from './components/notes'
+import { useNoteStore } from '@/store/notes.store'
 
 // add fetch to server
 export default function NotesPage() {
+  const notes = useNoteStore(props => props.notes)
+
   return (
     <main className='bg-gray-700 pt-24 min-h-[100vh]'>
       <Notes notes={notes}/>

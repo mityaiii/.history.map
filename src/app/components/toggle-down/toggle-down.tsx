@@ -35,7 +35,7 @@ export const ToggleDown = ({ children, header, className }: {
   return (
     <Box className={twMerge('relative', className)}>
       <motion.div
-        className='absolute right-4 top-4'
+        className='absolute right-4 top-4 cursor-pointer'
         initial='open'
         variants={arrowVariants}
         animate={open}

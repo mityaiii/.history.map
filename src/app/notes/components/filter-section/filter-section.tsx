@@ -10,13 +10,22 @@ import { motion, useCycle } from 'framer-motion'
 const variants = {
   'open': {
     opacity: '100%',
-    display: 'block',
     y: 0,
+    display: 'block',
   },
   'close': {
-    display: 'hidden',
     opacity: '0%',
     y: 10,
+    display: 'none',
+  },
+}
+
+const containerVariants = {
+  'open': {
+    backdropFilter: 'blur(20px)',
+  },
+  'close': {
+    backdropFilter: 'blur(0px)',
   },
 }
 
@@ -25,11 +34,19 @@ export const FilterSection = () => {
   const [openFilter, setOpenFilter] = useCycle('open', 'close');
 
   return (
-    <div className='max-w-[400px] mx-auto sm:mx-0 pb-1'>
+    <motion.div 
+      className='absolute lg:static left-0
+      right-0 lg:max-w-[400px] mx-auto lg:mx-0 h-full py-1 z-10'
+      initial='open'
+      animate={openFilter}
+      variants={containerVariants}
+    >
       <ControlPanel
+        className='w-5/6 lg:w-[320px] mx-auto lg:mx-0'
         onFilterClick={setOpenFilter}
       />
       <motion.div
+        className='w-5/6 lg:w-[320px] mx-auto lg:mx-0'
         initial={'open'}
         animate={openFilter}
         variants={variants}
@@ -37,6 +54,6 @@ export const FilterSection = () => {
         <FilterNav setFilter={setFilter}/>
         <Filter variant={filter}/>
       </motion.div> 
-    </div>
+    </motion.div>
   )
 }

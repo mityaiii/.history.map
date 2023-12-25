@@ -7,8 +7,8 @@ export default function Spinner() {
       <svg className='pl' viewBox='0 0 160 160' width='160px' height='160px' xmlns='http://www.w3.org/2000/svg'>
         <defs>
           <linearGradient id='grad' x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='0%' stop-color='#000' />
-            <stop offset='100%' stop-color='#fff' />
+            <stop offset='0%' stopColor='#000' />
+            <stop offset='100%' stopColor='#fff' />
           </linearGradient>
           <mask id='mask1'>
             <rect x='0' y='0' width='160' height='160' fill='url(#grad)' />

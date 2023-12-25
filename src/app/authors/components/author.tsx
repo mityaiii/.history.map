@@ -15,7 +15,7 @@ export const Author = (props: IAuthor) => {
     <Link href={`/authors/${props.id}`} className=''>
       <Box className='p-2 md:p-4 xl:w-[280px] flex flex-col items-center'>
         <Image 
-          className='w-32 h-32 lg:w-40 lg:h-40 xl:w-52 xl:h-52' 
+          className='w-40 h-40 lg:w-40 lg:h-40 xl:w-52 xl:h-52' 
           width={100} 
           height={100} 
           src='/author.png' 
