@@ -35,7 +35,7 @@ export default function Authors() {
   return (
     <section className='bg-gray-700 pt-24'>
       <div className='relative lg:w-5/6 mx-auto flex gap-x-5'>
-        <FilterSection/>
+        <FilterSection needNav={false} initState={'персоналия'}/>
         <div className='min-h-[120vh] w-5/6 pt-16 mx-auto grid 
         auto-rows-max sm:grid-cols-2 lg:w-full lg:pt-0 md:grid-cols-3 lg:grid-cols-2 2xl:grid-cols-3 gap-5'>
           { authors.map((value, indx) => <Author key={indx} {...value}/>) }

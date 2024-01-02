@@ -29,8 +29,8 @@ const containerVariants = {
   },
 }
 
-export const FilterSection = () => {
-  const [filter, setFilter] = useState<filterType>('общее');
+export const FilterSection = ({ needNav=true, initState='общее' }: { needNav?: boolean, initState?: filterType}) => {
+  const [filter, setFilter] = useState<filterType>(initState);
   const [openFilter, setOpenFilter] = useCycle('open', 'close');
 
   return (
@@ -51,7 +51,7 @@ export const FilterSection = () => {
         animate={openFilter}
         variants={variants}
       >
-        <FilterNav setFilter={setFilter}/>
+        { needNav && <FilterNav setFilter={setFilter}/> }
         <Filter variant={filter}/>
       </motion.div> 
     </motion.div>
