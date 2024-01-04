@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Checkbox = ({ text, id }: { text: string, id: string }) => {
+interface ICheckbox {
+  id: string;
+  children?: string;
+}
+
+export const Checkbox: React.FC<ICheckbox> = (props) => {
   return (
     <li className='inline-flex items-center'>
       <label className='relative flex items-center p-3 rounded-full cursor-pointer' htmlFor='check'>
@@ -11,11 +16,11 @@ const Checkbox = ({ text, id }: { text: string, id: string }) => {
           before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full
           before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-white
         checked:bg-good-300 checked:before:bg-good-300 hover:before:opacity-10"
-          id='check' 
+          id={props.id} 
         />
         <span
           className='absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4
-           -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100'
+          -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100'
         >
           <svg xmlns='http://www.w3.org/2000/svg' className='h-3.5 w-3.5' viewBox='0 0 20 20' fill='currentColor'
             stroke='currentColor' 
@@ -30,18 +35,8 @@ const Checkbox = ({ text, id }: { text: string, id: string }) => {
         </span>
       </label>
       <label className='mt-px text-sm font-light text-gray-700 cursor-pointer select-none' htmlFor='check'>
-        { text }
+        { props.children }
       </label>
     </li> 
-    // <li className='flex gap-x-2'>
-    //   <input 
-    //     id={id} 
-    //     type='checkbox'
-    //     className='w-4 active: bg-good-300'
-    //   />
-    //   <label className='text-sm'>{ text }</label>
-    // </li>
   )
 }
-
-export default Checkbox

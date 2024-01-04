@@ -1,12 +1,14 @@
-import { Map, GeoJSONSource } from 'maplibre-gl';
+import maplibregl, { Map, GeoJSONSource } from 'maplibre-gl';
 import { useEffect, useRef } from 'react';
 import { IMapProperties } from '../components/map/Map';
+import { useNoteStore } from '@/store/notes.store';
 
 export const useMapInitializer = (
-  { initalState, data }: IMapProperties,
+  { initalState: initialState, data }: IMapProperties,
   container: React.RefObject<HTMLDivElement>
 ) => {
   const map = useRef<maplibregl.Map | null>(null);
+  const notes = useNoteStore(state => state.notes);
 
   useEffect(() => {
     if (map.current) return;
@@ -27,8 +29,8 @@ export const useMapInitializer = (
           },
         ],
       },
-      center: [initalState.lng, initalState.lat],
-      zoom: initalState.zoom,
+      center: [initialState.lng, initialState.lat],
+      zoom: initialState.zoom,
       maxBounds: [
         [30.3609 - 0.2, 59.9311 - 0.143],
         [30.3609 + 0.2, 59.9311 + 0.143],
@@ -80,11 +82,11 @@ export const useMapInitializer = (
           'circle-color': [
             'step',
             ['get', 'point_count'],
-            '#51bbd6',
+            '#92949D',
             100,
-            '#f1f075',
+            '#92949D',
             750,
-            '#f28cb1',
+            '#92949D',
           ],
           'circle-radius': [
             'step',
@@ -116,8 +118,8 @@ export const useMapInitializer = (
         source: 'points',
         filter: ['!', ['has', 'point_count']],
         paint: {
-          'circle-color': '#11b4da',
-          'circle-radius': 4,
+          'circle-color': '#92949D',
+          'circle-radius': 12,
           'circle-stroke-width': 1,
           'circle-stroke-color': '#fff',
         },
@@ -128,7 +130,7 @@ export const useMapInitializer = (
       const features = mapInstance.queryRenderedFeatures(e.point, {
         layers: ['clusters'],
       });
-
+      
       const clusterId = features[0].properties.cluster_id;
 
       const source = mapInstance.getSource('points') as GeoJSONSource;
@@ -142,7 +144,54 @@ export const useMapInitializer = (
         });
       });
     });
-  }, [container, data, initalState]);
+
+    mapInstance.on('click', 'unclustered-point', (e) => {
+      if (!e.features || e.features.length === 0) {
+        return;
+      }
+
+      // @ts-ignore
+      const coordinates = e.features[0].geometry.coordinates.slice();
+      const note_id = e.features[0].properties.note_id;
+      const note = notes[note_id];
+      console.log(note);
+
+      let tsunami;
+  
+      if (e.features[0].properties.tsunami === 1) {
+        tsunami = 'yes';
+      } else {
+        tsunami = 'no';
+      }
+  
+      // Ensure that if the map is zoomed out such that
+      // multiple copies of the feature are visible, the
+      // popup appears over the copy being pointed to.
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+  
+      new maplibregl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(
+          `
+          <div class='flex flex-col items-center'>
+            <div class='flex justify-between '>
+              <a href='/authors/${note.author_id}'>
+                <img src='/author.png'
+                alt='автор цитаты' class='w-16 h-16 rounded-full shadow-md'></img>
+              </a>
+              <p class='pb-4 w-2/3'>${note.citation.length > 104 
+    ? note.citation.substring(0, 104) + '...'  
+    : note.citation}</p>
+            </div>
+            <a class=' text-neutral-500' href='/notes/${note.note_id}'>перейти к цитате</a>
+          </div>
+          `
+        )
+        .addTo(mapInstance);
+    });
+  }, [container, data, initialState, notes]);
 
   return container;
 };

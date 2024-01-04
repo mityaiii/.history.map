@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from './header'
-import Checkbox from './checkbox'
+import { Checkbox } from '@/app/components/checkbox/checkbox'
 
 const retrospectiveTypes: string[] = [
   'Свидетельство',
@@ -42,7 +42,7 @@ export const Retrospective = () => {
 
       <ul className='ml-4 flex flex-col'>
         { retrospectiveTypes.map((value, indx) => 
-          <Checkbox key={indx} text={value} id='id'/>
+          <Checkbox key={indx} id={`retrospective-${indx}`}>{value}</Checkbox>
         )}
       </ul>
     </div>
