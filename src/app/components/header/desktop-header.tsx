@@ -29,7 +29,7 @@ const item = {
 
 export default function DesktopHeader(props: IHeaderHocProperties) {
   return (
-    <div className='hidden lg:block absolute w-full bg-gray-700 bg-opacity-20 backdrop-blur-md text-white z-10'>
+    <div className='hidden lg:block absolute w-full bg-opacity-20 backdrop-blur-md text-white z-10'>
       <div className='w-5/6 mx-auto'>
         <motion.div
           variants={container}
