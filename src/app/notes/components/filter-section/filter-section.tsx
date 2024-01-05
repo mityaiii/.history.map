@@ -20,6 +20,8 @@ const variants = {
   },
 }
 
+// Legacy variants for blur
+
 const containerVariants = {
   'open': {
     backdropFilter: 'blur(20px)',
@@ -39,7 +41,6 @@ export const FilterSection = ({ needNav=true, initState='общее' }: { needNa
       right-0 lg:max-w-[400px] mx-auto lg:mx-0 h-full py-1 z-10'
       initial='open'
       animate={openFilter}
-      variants={containerVariants}
     >
       <ControlPanel
         className='w-5/6 lg:w-[320px] mx-auto lg:mx-0'
