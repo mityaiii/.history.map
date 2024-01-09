@@ -154,7 +154,6 @@ export const useMapInitializer = (
       const coordinates = e.features[0].geometry.coordinates.slice();
       const note_id = e.features[0].properties.note_id;
       const note = notes[note_id];
-      console.log(note);
 
       let tsunami;
   
